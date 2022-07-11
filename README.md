@@ -1,2 +1,2 @@
-# SuperMario.js
+# SuperMario
 Super Mariolike concepts using JavaScript
