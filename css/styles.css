@@ -17,16 +17,35 @@
     position: absolute;
     bottom: 0;
     width: 80px;
-    animation: pipe-animation 2s infinite linear;
+    right: -80px;
+    animation: pipe-animation 3s infinite linear;
 }
 
 /* Mudar os valores aqui faz com que o objeto pipe "ande"  */
 @keyframes pipe-animation {
     from{
-        right: 0;
+        right: -80px;
     }
 
     to {
         right: 100%;
+    }
+}
+
+.mario{
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    left: 0;
+    animation: mario-animation 3s infinite linear;
+}
+
+@keyframes mario-animation {
+    from{
+        left: -80px;
+    }
+
+    to {
+        left: 100%;
     }
 }
