@@ -10,11 +10,23 @@
     border: 1px solid #333;
     margin: 0 auto;
     position: relative;
+    overflow: hidden;  /* Tudo que sair do quadro(game-board) ficar fora da tela */
 }
 
 .pipe{
-    position:absolute;
+    position: absolute;
     bottom: 0;
     width: 80px;
-    right:0;
+    animation: pipe-animation 2s infinite linear;
+}
+
+/* Mudar os valores aqui faz com que o objeto pipe "ande"  */
+@keyframes pipe-animation {
+    from{
+        right: 0;
+    }
+
+    to {
+        right: 100%;
+    }
 }
