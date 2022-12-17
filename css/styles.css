@@ -35,17 +35,20 @@
 .mario{
     position: absolute;
     bottom: 0;
-    width: 80px;
+    width: 100px;
     left: 0;
     animation: mario-animation 3s infinite linear;
 }
 
-@keyframes mario-animation {
-    from{
-        left: -80px;
+@keyframes mario-jump {
+    0%{
+        bottom: 0;
+    }
+    50%{
+        bottom:180px;
     }
 
-    to {
-        left: 100%;
+    100% {
+        bottom: 0;
     }
 }
