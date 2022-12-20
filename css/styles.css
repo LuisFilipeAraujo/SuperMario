@@ -44,8 +44,15 @@
     0%{
         bottom: 0;
     }
+    40%{
+        bottom:160px;
+    }
+    
     50%{
         bottom:180px;
+    }
+    60%{
+        bottom:160px;
     }
 
     100% {
