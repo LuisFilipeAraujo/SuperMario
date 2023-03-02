@@ -27,6 +27,8 @@ const loop = setInterval(()=>{
         mario.src = 'images/game-over.png'; //muda o mario para a imagem de derrota
         mario.style.width = '80px';
         mario.style.marginLeft = '50px;'
+
+        clearInterval(loop);//stopping loop
     }
   
 },10);

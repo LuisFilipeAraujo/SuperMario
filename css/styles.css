@@ -5,12 +5,13 @@
 }
 
 .game-board{
-    width: 80%;
+    width: 100%;
     height:500px;
-    border: 1px solid #333;
+    border-bottom: 25px solid #21962b;
     margin: 0 auto;
     position: relative;
     overflow: hidden;  /* Tudo que sair do quadro(game-board) ficar fora da tela */
+    background:linear-gradient(#87CEEB, #E0F6FF);
 }
 
 .pipe{
@@ -62,3 +63,18 @@
     }
 }
 
+.clouds{
+    position: absolute;
+    width: 550px;
+    animation: clouds-animation 6s infinite linear;
+}
+
+
+@keyframes clouds-animation{
+  from{
+    right: -800px;
+  }
+  to{
+    right: 100%;
+  }
+}
