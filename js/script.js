@@ -17,9 +17,16 @@ const loop = setInterval(()=>{
 
     console.log(marioPosition);
 
-    if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 100) {
+    if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 100) { //condições para parada
         pipe.style.animation = 'none';
         pipe.style.left = `${pipePosition}px`;
+
+        mario.style.animation = 'none';
+        mario.style.bottom = `${marioPosition}px`;
+
+        mario.src = 'images/game-over.png'; //muda o mario para a imagem de derrota
+        mario.style.width = '80px';
+        mario.style.marginLeft = '50px;'
     }
   
 },10);
