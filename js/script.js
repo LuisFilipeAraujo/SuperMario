@@ -13,10 +13,14 @@ setTimeout(()=>{
 const loop = setInterval(()=>{
 
     const pipePosition = pipe.offsetLeft;
+    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
-    if (pipePosition <= 80) {
+    console.log(marioPosition);
+
+    if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 100) {
         pipe.style.animation = 'none';
         pipe.style.left = `${pipePosition}px`;
     }
+  
 },10);
 document.addEventListener('keydown', jump); //tecla faz pular
