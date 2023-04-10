@@ -4,6 +4,7 @@ const pipe = document.querySelector('.pipe');
 const jump = ()=>{
 mario.classList.add('jump');
 
+
 setTimeout(()=>{
 
     mario.classList.remove('jump');
@@ -32,4 +33,10 @@ const loop = setInterval(()=>{
     }
   
 },10);
-document.addEventListener('keydown', jump); //tecla faz pular
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'KeyW' || event.code === 'Space' || event.code === 'ArrowUp') {
+      jump();
+    }
+  });
+  
+
