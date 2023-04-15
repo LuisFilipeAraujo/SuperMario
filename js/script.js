@@ -33,7 +33,7 @@ const checkGameOver = () => {
     clearInterval(loop);
     gameOver = true;
 
-  } else if (pipePosition <= -20) { // o obstáculo foi ultrapassado com sucesso
+  } else if (pipePosition <= -75) { // o obstáculo foi ultrapassado com sucesso
     score++; // incrementa a pontuação
     scoreSpan.textContent = score; // exibe a pontuação atual na tela
   
