@@ -1,42 +1,51 @@
-const mario = document.querySelector('.mario');//para pegar a classe .mario 
+const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
+let gameOver = false;
 
-const jump = ()=>{
-mario.classList.add('jump');
+const jump = () => {
+  mario.classList.add('jump');
 
-
-setTimeout(()=>{
-
+  setTimeout(() => {
     mario.classList.remove('jump');
-     }, 500);
+  }, 500);
 }
 
-const loop = setInterval(()=>{
+const checkGameOver = () => {
+  const pipePosition = pipe.offsetLeft;
+  const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
-    const pipePosition = pipe.offsetLeft;
-    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+  console.log(marioPosition);
 
-    console.log(marioPosition);
+  if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 100) {
+    pipe.style.animation = 'none';
+    pipe.style.left = `${pipePosition}px`;
 
-    if (pipePosition <= 80 && pipePosition > 0 && marioPosition < 100) { //condições para parada
-        pipe.style.animation = 'none';
-        pipe.style.left = `${pipePosition}px`;
+    mario.style.animation = 'none';
+    mario.style.bottom = `${marioPosition}px`;
 
-        mario.style.animation = 'none';
-        mario.style.bottom = `${marioPosition}px`;
+    mario.src = 'images/game-over.png';
+    mario.style.width = '80px';
+    mario.style.marginLeft = '50px;'
 
-        mario.src = 'images/game-over.png'; //muda o mario para a imagem de derrota
-        mario.style.width = '80px';
-        mario.style.marginLeft = '50px;'
+    clearInterval(loop);
+    gameOver = true;
+  }
+}
 
-        clearInterval(loop);//stopping loop
-    }
-  
-},10);
-document.addEventListener('keydown', function(event) {
-    if (event.code === 'KeyW' || event.code === 'Space' || event.code === 'ArrowUp') {
-      jump();
-    }
-  });
-  
+const loop = setInterval(() => {
+  checkGameOver();
+}, 10);
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'KeyW' || event.code === 'Space' || event.code === 'ArrowUp') {
+    jump();
+  }
+  if (gameOver && event.keyCode) {
+    restartGame();
+  }
+});
+
+const restartGame = () => {
+  location.reload(); // recarrega a página, reiniciando o jogo
+}
 
