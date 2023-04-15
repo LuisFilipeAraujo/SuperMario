@@ -1,5 +1,8 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
+const scoreSpan = document.querySelector('.score');
+
+let score = 0; // inicializa a pontuação como zero
 let gameOver = false;
 
 const jump = () => {
@@ -29,6 +32,11 @@ const checkGameOver = () => {
 
     clearInterval(loop);
     gameOver = true;
+
+  } else if (pipePosition <= -20) { // o obstáculo foi ultrapassado com sucesso
+    score++; // incrementa a pontuação
+    scoreSpan.textContent = score; // exibe a pontuação atual na tela
+  
   }
 }
 
