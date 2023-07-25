@@ -1,10 +1,11 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const scoreSpan = document.querySelector('.score');
+const clouds = document.querySelector('.clouds');
 
-let score = 0; // inicializa a pontuação como zero
+let score = 0;
 let gameOver = false;
-let passedPipe = false; // variável para rastrear se o jogador já passou pelo obstáculo
+let passedPipe = false;
 
 const jump = () => {
   mario.classList.add('jump');
@@ -31,13 +32,14 @@ const checkGameOver = () => {
 
     clearInterval(loop);
     gameOver = true;
+    clouds.style.animation = 'none'; // Pare a animação das nuvens quando o jogo acabar
 
-  } else if (pipePosition <= -60 && !passedPipe) { // o obstáculo foi ultrapassado com sucesso e ainda não aumentamos a pontuação
-    score++; // incrementa a pontuação
-    scoreSpan.textContent = score; // exibe a pontuação atual na tela
-    passedPipe = true; // definimos passedPipe como true para evitar que aumente mais de uma vez por obstáculo
+  } else if (pipePosition <= -60 && !passedPipe) {
+    score++;
+    scoreSpan.textContent = score;
+    passedPipe = true;
   } else if (pipePosition > -60) {
-    passedPipe = false; // resetamos passedPipe quando o obstáculo estiver novamente à frente do Mario
+    passedPipe = false;
   }
 }
 
@@ -55,5 +57,5 @@ document.addEventListener('keydown', (event) => {
 });
 
 const restartGame = () => {
-  location.reload(); // recarrega a página, reiniciando o jogo
+  location.reload();
 }
