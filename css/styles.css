@@ -178,13 +178,22 @@
 }
 
 .score{
-    font-family: 'Times New Roman', Times, serif;
-    width: 100%;
-    padding: 10px;
-    font-size:40px;
-    border: 10px;
-    background: greenyellow; 
-    outline: none;
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    z-index: 1;
+    color: #fff;
+    font: 700 24px/1 'Trebuchet MS', sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 0 #9e1714;
+}
+
+.score::before{
+    content: 'SCORE ';
+    color: #ffd83d;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-shadow: 2px 2px 0 #9e1714;
 } 
 
 @media (max-width: 560px){
