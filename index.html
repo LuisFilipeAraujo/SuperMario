@@ -23,7 +23,16 @@
         </div>
     </div>
 
-    <audio id="myAudio" src="soundtrack/Super Mario Bros. Theme Song (320 kbps).mp3" loop>
+    <div class="jukebox" aria-label="Jukebox">
+        <span class="jukebox-label">♫ JUKEBOX</span>
+        <select class="track-select" aria-label="Escolher música">
+            <option value="soundtrack/Super Mario Bros. Theme Song (320 kbps).mp3">Super Mario Theme</option>
+            <option value="soundtrack/JackBlack_Peaches.mp3">Peaches</option>
+        </select>
+        <button class="music-toggle" type="button" aria-label="Tocar música">▶</button>
+    </div>
+
+    <audio id="myAudio" src="soundtrack/Super Mario Bros. Theme Song (320 kbps).mp3" loop preload="metadata">
         Seu navegador não suporta o elemento de áudio.
     </audio>
 

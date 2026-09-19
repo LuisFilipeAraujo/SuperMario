@@ -5,6 +5,14 @@ const clouds = document.querySelector('.clouds');
 const gameBoard = document.querySelector('.game-board');
 const playButton = document.querySelector('.play-button');
 const audio = document.querySelector('#myAudio');
+const trackSelect = document.querySelector('.track-select');
+const musicToggle = document.querySelector('.music-toggle');
+const savedTrack = localStorage.getItem('superMarioTrack');
+
+if (savedTrack && [...trackSelect.options].some((option) => option.value === savedTrack)) {
+  trackSelect.value = savedTrack;
+  audio.src = savedTrack;
+}
 
 let score = 0;
 let gameOver = false;
@@ -54,6 +62,36 @@ const startGame = () => {
   audio.play().catch(() => {});
 };
 
+trackSelect.addEventListener('change', () => {
+  const shouldResume = gameBoard.classList.contains('is-playing') && !audio.paused;
+
+  localStorage.setItem('superMarioTrack', trackSelect.value);
+  audio.src = trackSelect.value;
+  audio.load();
+
+  if (shouldResume) {
+    audio.play().catch(() => {});
+  }
+});
+
+musicToggle.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play().catch(() => {});
+  } else {
+    audio.pause();
+  }
+});
+
+audio.addEventListener('play', () => {
+  musicToggle.textContent = 'Ⅱ';
+  musicToggle.setAttribute('aria-label', 'Pausar música');
+});
+
+audio.addEventListener('pause', () => {
+  musicToggle.textContent = '▶';
+  musicToggle.setAttribute('aria-label', 'Tocar música');
+});
+
 gameBoard.classList.add('is-ready');
 playButton.addEventListener('click', startGame);
 
@@ -74,5 +112,23 @@ document.addEventListener('keydown', (event) => {
 });
 
 const restartGame = () => {
-  location.reload();
+  clearInterval(loop);
+  score = 0;
+  scoreSpan.textContent = score;
+  gameOver = false;
+  passedPipe = false;
+
+  pipe.style.animation = '';
+  pipe.style.left = '';
+  clouds.style.animation = '';
+
+  mario.src = './images/mario.gif';
+  mario.style.animation = '';
+  mario.style.bottom = '';
+  mario.style.width = '';
+  mario.style.marginLeft = '';
+
+  audio.currentTime = 0;
+  loop = setInterval(checkGameOver, 10);
+  audio.play().catch(() => {});
 }

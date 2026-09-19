@@ -64,6 +64,54 @@
     display: none;
 }
 
+.jukebox{
+    width: fit-content;
+    max-width: calc(100% - 16px);
+    margin: 18px auto 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    background: #1b237e;
+    box-shadow: 3px 3px 0 #11154e;
+    color: #fff;
+    font: 700 13px 'Trebuchet MS', sans-serif;
+}
+
+.jukebox-label{
+    color: #ffd83d;
+    white-space: nowrap;
+}
+
+.track-select,
+.music-toggle{
+    min-height: 30px;
+    border: 2px solid #11154e;
+    border-radius: 3px;
+    color: #11154e;
+    background: #fff;
+    font: 700 12px 'Trebuchet MS', sans-serif;
+}
+
+.track-select{
+    max-width: 160px;
+    padding: 4px 24px 4px 6px;
+}
+
+.music-toggle{
+    width: 32px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.music-toggle:hover,
+.music-toggle:focus-visible{
+    color: #fff;
+    background: #e52521;
+}
+
 .pipe{
     position: absolute;/* Para impedir que o comportamento de uma animação não altere o da outra */
     bottom: 0;
@@ -138,3 +186,15 @@
     background: greenyellow; 
     outline: none;
 } 
+
+@media (max-width: 560px){
+    .jukebox{
+        width: calc(100% - 16px);
+        justify-content: center;
+    }
+
+    .track-select{
+        flex: 1;
+        max-width: none;
+    }
+}
