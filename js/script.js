@@ -2,10 +2,14 @@ const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const scoreSpan = document.querySelector('.score');
 const clouds = document.querySelector('.clouds');
+const gameBoard = document.querySelector('.game-board');
+const playButton = document.querySelector('.play-button');
+const audio = document.querySelector('#myAudio');
 
 let score = 0;
 let gameOver = false;
 let passedPipe = false;
+let loop;
 
 const jump = () => {
   mario.classList.add('jump');
@@ -43,11 +47,24 @@ const checkGameOver = () => {
   }
 }
 
-const loop = setInterval(() => {
-  checkGameOver();
-}, 10);
+const startGame = () => {
+  gameBoard.classList.remove('is-ready');
+  gameBoard.classList.add('is-playing');
+  loop = setInterval(checkGameOver, 10);
+  audio.play().catch(() => {});
+};
+
+gameBoard.classList.add('is-ready');
+playButton.addEventListener('click', startGame);
 
 document.addEventListener('keydown', (event) => {
+  if (!gameBoard.classList.contains('is-playing')) {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      startGame();
+    }
+    return;
+  }
+
   if (event.code === 'KeyW' || event.code === 'Space' || event.code === 'ArrowUp') {
     jump();
   }

@@ -12,16 +12,20 @@
 </head>
 
 <body>
-    <audio id="myAudio" src="soundtrack/Super Mario Bros. Theme Song (320 kbps).mp3" controls>
-        Seu navegador não suporta o elemento de áudio.
-      </audio>
-      
     <div class="game-board">
         <img src="./images/clouds.png" class="clouds">
         <img src="./images/mario.gif" class="mario">
         <img src="./images/pipe.png" alt="tubo" class="pipe">
         <span class="score">0</span>  
+        <div class="start-screen">
+            <p class="game-title">SUPER MARIO</p>
+            <button class="play-button" type="button" aria-label="Começar o jogo">▶ JOGAR</button>
+        </div>
     </div>
+
+    <audio id="myAudio" src="soundtrack/Super Mario Bros. Theme Song (320 kbps).mp3" loop>
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
 
 </body>
 </html>
